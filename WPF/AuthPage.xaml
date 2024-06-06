@@ -1,0 +1,36 @@
+﻿<Page x:Class="WPF.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="14"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Страница авторизации">
+
+    <Grid Background="{DynamicResource MaterialDesign.Brush.Background}">
+        <materialDesign:Card Padding="7" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <Label Content="Сервер API" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding InstanceAPI}" MinWidth="200"/>
+
+                <Label Content="Логин" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding Login}" MinWidth="200"/>
+
+                <Label Content="Пароль" HorizontalAlignment="Center"/>
+                <PasswordBox x:Name="passwordTextBox" MinWidth="200"/>
+                
+                <Separator Height="20" Background="Transparent"/>
+                <Button Content="Войти" Click="AuthButton_Click"/>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</Page>
