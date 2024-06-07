@@ -23,14 +23,19 @@ namespace WPF
     /// </summary>
     public partial class AuthPage : Page
     {
-        public string InstanceAPI { get; set; }
+        public string InstanceAPI { get; set; } 
 
         public string Login { get; set; }
 
         public AuthPage()
         {
             InitializeComponent();
-            DataContext = this;            
+            DataContext = this;
+
+            // TODO delete
+            InstanceAPI = "http://localhost:5205";
+            Login = "admin";
+            passwordTextBox.Password = "admin";
         }
 
         private async void AuthButton_Click(object sender, RoutedEventArgs e)
@@ -64,26 +69,23 @@ namespace WPF
 
             if (sessionManager.AuthResponse is not null)
             {
-                if (sessionManager.AuthResponse.Username == "admin")
+                switch (sessionManager.AuthResponse.Role)
                 {
-                    sessionManager.Frame.Navigate(new UsersPage());
-                } 
-                else
-                {
-                    switch (sessionManager.AuthResponse.Role)
-                    {
-                        case "student":
-                            //sessionManager.Frame.Navigate(new UsersPage());
-                            break;
+                    case "admin":
+                        sessionManager.Frame.Navigate(new UsersPage());
+                        break;
 
-                        case "teacher":
-                            //sessionManager.Frame.Navigate(new UsersPage());
-                            break;
+                    case "student":
+                        //sessionManager.Frame.Navigate(new UsersPage());
+                        break;
 
-                        default:
-                            throw new Exception($"Unknown role '{sessionManager.AuthResponse.Role}'");
-                    }
-                }               
+                    case "teacher":
+                        //sessionManager.Frame.Navigate(new UsersPage());
+                        break;
+
+                    default:
+                        throw new Exception($"Unknown role '{sessionManager.AuthResponse.Role}'");
+                }            
             }                       
         }
     }

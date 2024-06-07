@@ -1,0 +1,43 @@
+﻿<Window x:Class="WPF.EditUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        Title="Обновление записи аккаунта" Height="250" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Логин" Grid.Column="0" Grid.Row="0"/>
+        <TextBox Text="{Binding Current.Login}" IsReadOnly="{Binding IsNotNew}" Grid.Column="1" Grid.Row="0"/>
+
+        <Label Content="Роль" Grid.Column="0" Grid.Row="1"/>
+        <TextBox Text="{Binding Current.Role}" IsReadOnly="True" Grid.Column="1" Grid.Row="1"/>
+
+        <Label Content="{Binding PasswordLabelContent}" Grid.Column="0" Grid.Row="2"/>
+        <PasswordBox x:Name="passwordTextBox" Grid.Column="2" Grid.Row="2"/>
+
+        <Button IsEnabled="{Binding IsNotNew}" Content="Обновить пароль" Grid.ColumnSpan="2" Grid.Row="3" Click="UpdatePasswordButton_Click"/>
+        
+        <Label Content="Студент" Grid.Row="4"/>
+        <TextBlock Text="{Binding Student}" Grid.Column="1" Grid.Row="4"/>
+
+        <Button Content="Закрепить студента" Grid.ColumnSpan="2" Grid.Row="5" Click="SetStudentButton_Click"/>
+
+        <Button VerticalAlignment="Bottom" Content="Удалить" Grid.Column="0" Grid.Row="6" Click="DeleteButton_Click"/>
+        <Button VerticalAlignment="Bottom" Content="Сохранить" Grid.Column="1" Grid.Row="6" Click="SaveButton_Click"/>
+    </Grid>
+</Window>

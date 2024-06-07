@@ -17,6 +17,14 @@
       Title="UsersPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
+        <DataGrid IsReadOnly="True" ItemsSource="{Binding Path=Users, Mode=TwoWay}" SelectedItem="{Binding Selected}"  PreviewMouseDoubleClick="DataGrid_PreviewMouseDoubleClick"/>
+        <StackPanel Grid.Row="1">
+            <Button Content="Новая запиcь" Click="NewRecordButton_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -42,6 +43,27 @@ namespace WPF
             }
 
             return _instance;
+        }
+
+        public HttpClient ResolveClient()
+        {
+            if (AuthResponse is not null) 
+            {
+                HttpClient httpClient = new HttpClient()
+                {
+                    BaseAddress = new Uri(AuthResponse.InstanceAPI),
+                };
+
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {AuthResponse.AccessToken}");
+
+                return httpClient;
+            }
+            else
+            {
+                throw new Exception("Not authorizied");
+            }
+
+            
         }
     }
 }
