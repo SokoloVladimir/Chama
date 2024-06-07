@@ -21,7 +21,7 @@
         <Label Content="Группа" Grid.Column="0" Grid.Row="0"/>
         <ComboBox ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}" Grid.Column="1" Grid.Row="0" SelectionChanged="GroupComboBox_SelectionChanged"/>
 
-        <Label Content="Студенты" Grid.Column="0" Grid.Row="1"/>
+        <Label Content="Студент" Grid.Column="0" Grid.Row="1"/>
         <ComboBox ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" Grid.Column="1" Grid.Row="1"/>
 
         <Button Content="Выбрать" Height="Auto" Grid.ColumnSpan="2" Grid.Row="2" Click="BrowseButton_Click"/>
