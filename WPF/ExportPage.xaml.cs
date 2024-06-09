@@ -29,6 +29,12 @@ namespace WPF
     [ObservableObject]
     public partial class ExportPage : Page
     {
+        [ObservableProperty]
+        private bool _workNameInHeader = false;
+
+        [ObservableProperty]
+        private bool _taskCountInHeader = false;
+
         public List<Group> Groups { get; set; } = new List<Group>();
 
         public Group SelectedGroup { get; set; }
@@ -46,7 +52,7 @@ namespace WPF
         /// </summary>
         [ObservableProperty]
         private string _rawData = String.Empty;
-        
+
         public bool IsRawDataContains
         {
             get => !string.IsNullOrWhiteSpace(RawData);
@@ -97,6 +103,17 @@ namespace WPF
         }
 
         /// <summary>
+        /// Вернуть URL для экспорта
+        /// </summary>
+        /// <returns></returns>
+        private string BuildExportUrl()
+        {
+            return $"/export/{SelectedGroup.Id}/{SelectedDiscipline.Id}/{SelectedSemester.Id}?"
+                + $"{nameof(WorkNameInHeader)}={WorkNameInHeader}&"
+                + $"{nameof(TaskCountInHeader)}={TaskCountInHeader}&";
+        }
+
+        /// <summary>
         /// Обновить таблицу
         /// </summary>
         /// <returns></returns>
@@ -104,7 +121,7 @@ namespace WPF
         {            
             try
             {
-                string data = await SessionManager.getInstance().ResolveClient().GetStringAsync($"/export/{SelectedGroup.Id}/{SelectedDiscipline.Id}/{SelectedSemester.Id}");
+                string data = await SessionManager.getInstance().ResolveClient().GetStringAsync(BuildExportUrl());
                 string[] rows = PrepareRawData(data).Split('\n');
 
                 DataTable dataTable = new DataTable();
@@ -152,12 +169,19 @@ namespace WPF
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                using (StreamWriter streamWriter = new StreamWriter(File.Open(saveFileDialog.FileName, FileMode.Create), Encoding.UTF8))
+                try
                 {
-                    streamWriter.Write(RawData);
-                }
+                    using (StreamWriter streamWriter = new StreamWriter(File.Open(saveFileDialog.FileName, FileMode.Create), Encoding.UTF8))
+                    {
+                        streamWriter.Write(RawData);
+                    }
 
-                ShellExecute(saveFileDialog.FileName);
+                    ShellExecute(saveFileDialog.FileName);
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось открыть файл", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Error);
+                }                                
             }
         }
 

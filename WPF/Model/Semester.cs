@@ -20,7 +20,7 @@ namespace WPF.Model
 
         public override string ToString()
         {
-            return StartYear.ToString() + '/' + (IsSecond ? '2' : '1');
+            return $"{StartYear}/{StartYear + 1}, {(IsSecond ? '2' : '1')} семестр";
         }
     }
 }

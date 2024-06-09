@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="Обновление записи аккаунта" Height="250" Width="400">
+        Title="Обновление записи аккаунта" Height="250" Width="400"
+        Icon="pack://application:,,,/Resources/circle.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

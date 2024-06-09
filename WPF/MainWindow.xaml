@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF"
         
         mc:Ignorable="d"
-        Height="450" Width="800"
+        Height="450" Width="850"
         Title="Main"
         Icon="pack://application:,,,/Resources/circle.ico"
     >

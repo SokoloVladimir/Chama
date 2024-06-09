@@ -76,7 +76,7 @@ namespace WPF
                         break;
 
                     case "student":
-                        //sessionManager.Navigate(new UsersPage());
+                        MessageBox.Show("Смените учетную запись", "Недостающие права доступа", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         break;
 
                     case "teacher":
@@ -84,8 +84,10 @@ namespace WPF
                         break;
 
                     default:
-                        throw new Exception($"Unknown role '{sessionManager.AuthResponse.Role}'");
+                        MessageBox.Show("Ошибка учетной записи: неизвестные ролевые права", "Недостающие права доступа", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
                 }            
+
             }                       
         }
     }

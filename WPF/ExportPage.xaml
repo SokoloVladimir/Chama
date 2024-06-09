@@ -21,6 +21,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -31,8 +32,10 @@
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Группа"/>
                 <ComboBox SelectedItem="{Binding SelectedGroup}" ItemsSource="{Binding Groups}" MinWidth="100" MaxWidth="250"/>
+                
                 <Label Content="Дисциплина"/>
                 <ComboBox SelectedItem="{Binding SelectedDiscipline}" ItemsSource="{Binding Disciplines}" MinWidth="100" MaxWidth="250"/>
+                
                 <Label Content="Семестр"/>
                 <ComboBox SelectedItem="{Binding SelectedSemester}" ItemsSource="{Binding Semesters}" MinWidth="100" MaxWidth="250"/>
             </StackPanel>
@@ -41,8 +44,16 @@
                 <Button Content="Обновить" Click="UpdateButton_Click" Margin="5"/>
                 <Button IsEnabled="{Binding IsRawDataContains}" Content="Экспорт" Click="ExportButton_Click"/>
             </StackPanel>
+            
+            <GroupBox Grid.Row="1" Header="Опции">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding WorkNameInHeader}" Content="Включить названия работ"/>
+                    <CheckBox IsChecked="{Binding TaskCountInHeader}" Content="Включить количество заданий в работе"/>
+                </StackPanel>
+            </GroupBox>
+            
 
-            <DataGrid x:Name="mainDataGrid" IsReadOnly="True" Grid.Row="1"/>
+            <DataGrid x:Name="mainDataGrid" IsReadOnly="True" Grid.Row="2"/>
         </Grid>
     </Page.Content>
     
