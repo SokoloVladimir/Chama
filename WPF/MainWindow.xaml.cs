@@ -16,6 +16,7 @@ namespace WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public Frame MainFrameContent { get; set; } = new Frame();
 
         public MainWindow()
@@ -24,10 +25,9 @@ namespace WPF
             DataContext = this;
 
             SessionManager navManager = SessionManager.getInstance();
-            navManager.Frame = MainFrameContent;
-            navManager.Frame.Navigate(new AuthPage());
+            navManager.SetFrame(MainFrameContent);
+            navManager.SetMainWindow(this);
+            navManager.Navigate(new AuthPage());            
         }
-
-
     }
 }

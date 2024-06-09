@@ -1,0 +1,49 @@
+﻿<Page x:Class="WPF.ExportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:WPF"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="14"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+        
+      Title="Просмотр итогов">
+
+    <Page.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Label Content="Группа"/>
+                <ComboBox SelectedItem="{Binding SelectedGroup}" ItemsSource="{Binding Groups}" MinWidth="100" MaxWidth="250"/>
+                <Label Content="Дисциплина"/>
+                <ComboBox SelectedItem="{Binding SelectedDiscipline}" ItemsSource="{Binding Disciplines}" MinWidth="100" MaxWidth="250"/>
+                <Label Content="Семестр"/>
+                <ComboBox SelectedItem="{Binding SelectedSemester}" ItemsSource="{Binding Semesters}" MinWidth="100" MaxWidth="250"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Обновить" Click="UpdateButton_Click" Margin="5"/>
+                <Button IsEnabled="{Binding IsRawDataContains}" Content="Экспорт" Click="ExportButton_Click"/>
+            </StackPanel>
+
+            <DataGrid x:Name="mainDataGrid" IsReadOnly="True" Grid.Row="1"/>
+        </Grid>
+    </Page.Content>
+    
+</Page>

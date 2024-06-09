@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPF.Model
 {
-    class AuthResponse
+    public class AuthResponse
     {
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }

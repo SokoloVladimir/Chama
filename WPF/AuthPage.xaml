@@ -14,7 +14,7 @@
       
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Страница авторизации">
+      Title="Авторизация">
 
     <Grid Background="{DynamicResource MaterialDesign.Brush.Background}">
         <materialDesign:Card Padding="7" HorizontalAlignment="Center" VerticalAlignment="Center">

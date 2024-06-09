@@ -4,18 +4,21 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using WPF.Model;
 
 namespace WPF
 {
-    class SessionManager
-    {
+    public class SessionManager
+    {        
         private static SessionManager? _instance = null;
 
         private static readonly object cookie = "cookie";
 
-        public Frame Frame { get; set; } = new Frame();
+        private Frame _frame = new Frame();
+
+        private Window _mainWindow = new Window();
 
         public AuthResponse? AuthResponse { get; set; } = null;
 
@@ -61,9 +64,27 @@ namespace WPF
             else
             {
                 throw new Exception("Not authorizied");
-            }
+            }            
+        }
 
-            
+        public void Navigate(object content)
+        {
+            _frame.Navigate(content);
+
+            if (content is Page page)
+            {
+                _mainWindow.Title = page.Title;
+            }
+        }
+
+        public void SetFrame(Frame frame)
+        {
+            _frame = frame;
+        }
+
+        public void SetMainWindow(Window mainWindow)
+        {
+            _mainWindow = mainWindow;
         }
     }
 }

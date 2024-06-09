@@ -11,6 +11,8 @@
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Green" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <BitmapImage x:Key="CircleIco" UriSource="Resources/circle.ico" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -34,8 +34,8 @@ namespace WPF
 
             // TODO delete
             InstanceAPI = "http://localhost:5205";
-            Login = "admin";
-            passwordTextBox.Password = "admin";
+            Login = "teacher";
+            passwordTextBox.Password = "teacher";
         }
 
         private async void AuthButton_Click(object sender, RoutedEventArgs e)
@@ -72,15 +72,15 @@ namespace WPF
                 switch (sessionManager.AuthResponse.Role)
                 {
                     case "admin":
-                        sessionManager.Frame.Navigate(new UsersPage());
+                        sessionManager.Navigate(new UsersPage());
                         break;
 
                     case "student":
-                        //sessionManager.Frame.Navigate(new UsersPage());
+                        //sessionManager.Navigate(new UsersPage());
                         break;
 
                     case "teacher":
-                        //sessionManager.Frame.Navigate(new UsersPage());
+                        sessionManager.Navigate(new ExportPage());
                         break;
 
                     default:
