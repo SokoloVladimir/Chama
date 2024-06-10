@@ -41,7 +41,7 @@ namespace WPF
         private async void AuthButton_Click(object sender, RoutedEventArgs e)
         {
             string password = passwordTextBox.Password;
-            SessionManager sessionManager = SessionManager.getInstance();
+            SessionManager sessionManager = SessionManager.Instance;
 
             try
             {

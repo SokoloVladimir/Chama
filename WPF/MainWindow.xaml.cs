@@ -24,10 +24,10 @@ namespace WPF
             InitializeComponent();
             DataContext = this;
 
-            SessionManager navManager = SessionManager.getInstance();
+            SessionManager navManager = SessionManager.Instance;
             navManager.SetFrame(MainFrameContent);
             navManager.SetMainWindow(this);
-            navManager.Navigate(new AuthPage());            
+            navManager.Navigate(new AuthPage());                      
         }
     }
 }

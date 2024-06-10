@@ -67,7 +67,7 @@ namespace WPF
         {
             try
             {
-                ChangeStudent(await SessionManager.getInstance().ResolveClient().GetFromJsonAsync<Student>($"/account/{Current.Id}/student"));
+                ChangeStudent(await SessionManager.Instance.ResolveClient().GetFromJsonAsync<Student>($"/account/{Current.Id}/student"));
             }
             catch
             {
@@ -79,7 +79,7 @@ namespace WPF
         {            
             try
             {
-                HttpResponseMessage resp = await SessionManager.getInstance().ResolveClient().PostAsync(
+                HttpResponseMessage resp = await SessionManager.Instance.ResolveClient().PostAsync(
                     "/account/setpassword",
                     JsonContent.Create(
                         new
@@ -113,7 +113,7 @@ namespace WPF
             {
                 if (IsNotNew)
                 {
-                    HttpResponseMessage resp = await SessionManager.getInstance().ResolveClient().DeleteAsync($"/account/{Current.Id}");
+                    HttpResponseMessage resp = await SessionManager.Instance.ResolveClient().DeleteAsync($"/account/{Current.Id}");
                     if (!resp.IsSuccessStatusCode)
                     {
                         throw new ArgumentException();
@@ -135,7 +135,7 @@ namespace WPF
             {
                 if (IsNew)
                 {
-                    HttpResponseMessage createResponse = await SessionManager.getInstance().ResolveClient().PostAsync(
+                    HttpResponseMessage createResponse = await SessionManager.Instance.ResolveClient().PostAsync(
                         "/account",
                         JsonContent.Create(Current.Login)
                     );
@@ -144,7 +144,7 @@ namespace WPF
 
                     if (Student is not null)
                     {
-                        HttpResponseMessage changeAccountResponse = await SessionManager.getInstance().ResolveClient().PutAsync(
+                        HttpResponseMessage changeAccountResponse = await SessionManager.Instance.ResolveClient().PutAsync(
                             $"/student/{Student.Id}/account/{created.Id}", null
                         );
                     }
@@ -160,7 +160,7 @@ namespace WPF
                     {
                         if (Student is null)
                         {
-                            HttpResponseMessage changeAccountResponse = await SessionManager.getInstance().ResolveClient().PutAsync(
+                            HttpResponseMessage changeAccountResponse = await SessionManager.Instance.ResolveClient().PutAsync(
                                 $"/account/resetstudent/{Current.Id}", null
                             );
 
@@ -171,7 +171,7 @@ namespace WPF
                         }
                         else
                         {
-                            HttpResponseMessage changeAccountResponse = await SessionManager.getInstance().ResolveClient().PutAsync(
+                            HttpResponseMessage changeAccountResponse = await SessionManager.Instance.ResolveClient().PutAsync(
                                 $"/student/{Student.Id}/account/{Current.Id}", null
                             );
 

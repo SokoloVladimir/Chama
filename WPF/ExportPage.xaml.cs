@@ -74,9 +74,9 @@ namespace WPF
         {
             try
             {
-                Disciplines.AddRange(await SessionManager.getInstance().ResolveClient().GetFromJsonAsync<List<Discipline>>("/discipline"));
-                Groups.AddRange(await SessionManager.getInstance().ResolveClient().GetFromJsonAsync<List<Group>>("/group"));
-                Semesters.AddRange(await SessionManager.getInstance().ResolveClient().GetFromJsonAsync<List<Semester>>("/semester"));
+                Disciplines.AddRange(await SessionManager.Instance.ResolveClient().GetFromJsonAsync<List<Discipline>>("/discipline"));
+                Groups.AddRange(await SessionManager.Instance.ResolveClient().GetFromJsonAsync<List<Group>>("/group"));
+                Semesters.AddRange(await SessionManager.Instance.ResolveClient().GetFromJsonAsync<List<Semester>>("/semester"));
                 Semesters.Reverse();
             }
             catch { }
@@ -121,7 +121,7 @@ namespace WPF
         {            
             try
             {
-                string data = await SessionManager.getInstance().ResolveClient().GetStringAsync(BuildExportUrl());
+                string data = await SessionManager.Instance.ResolveClient().GetStringAsync(BuildExportUrl());
                 string[] rows = PrepareRawData(data).Split('\n');
 
                 DataTable dataTable = new DataTable();

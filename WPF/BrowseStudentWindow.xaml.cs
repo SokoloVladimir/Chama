@@ -43,7 +43,7 @@ namespace WPF
             try
             {
                 Groups.Clear();
-                Groups.AddRange(await SessionManager.getInstance().ResolveClient().GetFromJsonAsync<List<Group>>("/group"));
+                Groups.AddRange(await SessionManager.Instance.ResolveClient().GetFromJsonAsync<List<Group>>("/group"));
             }
             catch
             {
@@ -56,7 +56,7 @@ namespace WPF
             try
             {
                 Students.Clear();
-                Students.AddRange(await SessionManager.getInstance().ResolveClient().GetFromJsonAsync<List<Student>>($"/student?groupId={SelectedGroup.Id}"));
+                Students.AddRange(await SessionManager.Instance.ResolveClient().GetFromJsonAsync<List<Student>>($"/student?groupId={SelectedGroup.Id}"));
             }
             catch
             {

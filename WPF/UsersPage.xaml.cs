@@ -41,7 +41,7 @@ namespace WPF
         private async void Refresh()
         {
             Users = null;
-            Users = await SessionManager.getInstance().ResolveClient().GetAsync("/account").Result.Content.ReadFromJsonAsync<List<User>>();
+            Users = await SessionManager.Instance.ResolveClient().GetAsync("/account").Result.Content.ReadFromJsonAsync<List<User>>();
 
             PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs("Users"));
         }
