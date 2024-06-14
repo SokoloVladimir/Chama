@@ -33,9 +33,7 @@ namespace WPF
             DataContext = this;
 
             // TODO delete
-            InstanceAPI = "http://localhost:5205";
-            Login = "teacher";
-            passwordTextBox.Password = "teacher";
+            InstanceAPI = "https://zerda.twenkey.ru";
         }
 
         private async void AuthButton_Click(object sender, RoutedEventArgs e)
