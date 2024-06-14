@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="Редактирование студента" Height="180" Width="300">
+        Title="Редактирование студента" Height="180" Width="300"
+        Icon="pack://application:,,,/Resources/circle.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
