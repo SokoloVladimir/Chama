@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,7 +28,14 @@ namespace WPF
             SessionManager navManager = SessionManager.Instance;
             navManager.SetFrame(MainFrameContent);
             navManager.SetMainWindow(this);
-            navManager.Navigate(new AuthPage());                      
+            navManager.Navigate(new AuthPage());
+
+            this.Closed += MainWindow_Closed;
+        }
+
+        private void MainWindow_Closed(object? sender, EventArgs e)
+        {
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

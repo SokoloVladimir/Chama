@@ -13,7 +13,7 @@
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{DynamicResource MaterialDesignFont}"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="900"
         
       Title="Просмотр итогов">
 
@@ -41,8 +41,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Обновить" Click="UpdateButton_Click" Margin="5"/>
-                <Button IsEnabled="{Binding IsRawDataContains}" Content="Экспорт" Click="ExportButton_Click"/>
+                <Button Content="Обновить" Click="UpdateButton_Click"/>
+                <Button IsEnabled="{Binding IsRawDataContains}" Content="Экспорт" Click="ExportButton_Click" Margin="5"/>
+                <Button Content="👤" Click="StudentsButton_Click"/>
             </StackPanel>
             
             <GroupBox Grid.Row="1" Header="Опции">

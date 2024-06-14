@@ -242,5 +242,13 @@ namespace WPF
         {
             ExportInitiate();
         }
+
+        private async void StudentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedGroup is not null)
+            {
+                SessionManager.Instance.Navigate(new StudentsPage(SelectedGroup));
+            }            
+        }
     }
 }

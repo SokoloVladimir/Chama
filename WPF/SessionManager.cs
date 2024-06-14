@@ -76,8 +76,8 @@ namespace WPF
         /// <summary>
         /// Получить клиент с авторизацией
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <returns>авторизованный HTTP-клиент</returns>
+        /// <exception cref="Exception">неавторизован</exception>
         public HttpClient ResolveClient()
         {
             if (AuthResponse is not null) 
